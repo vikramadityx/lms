@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0
+}
+
+.file-button::file-selector-button{
+  background-color: #5570F1;
+  border-radius: 12px;
+  color: white;
+  font-family: 'inter';
+  border: none;
+  padding: 10px 8px;
+  margin-right: 20px;
+}
+
+.dashboard-screen{
+  width: calc(100vw - 296px);
+}
+
+.dashboard-height{
+  height: calc(100vh - 65px)
+}
