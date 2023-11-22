@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Login from "./screens/login";
+import Login from "./screens/Login";
 import SignUp from "./screens/SignUp";
 import DashboardMain from "./screens/DashboardMain";
 import Borrow from "./screens/Borrow";

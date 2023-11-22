@@ -11,7 +11,23 @@ const SignUp = () => {
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
-    const [role, setRole] = useState("");
+    const [role, setRole] = useState(""); 
+    
+    const formData = {
+        email: email,
+        password: password,
+        role: role
+    }
+
+    const handleSignUp = async () => {
+        try{
+            const res = await axios.post("http://localhost:3000/api/v1/user/register", formData);
+            const d = await res.json();
+            alert(d);
+        }catch(e){
+            console.log(e)
+        }
+    }
 
     return (
         <div className='bg-[#F4F5FA] h-screen flex justify-center items-center '>
@@ -24,9 +40,9 @@ const SignUp = () => {
                     </div>
                 </div>
                 <div className='mt-[60px] flex flex-col gap-[30px]'>
-                    <CustomInput showIcon={true} iconSrc={Profile} placeholder="Username" />
-                    <CustomInput showIcon={true} iconSrc={Message} placeholder="Email Address" />
-                    <CustomInput showIcon={true} iconSrc={Lock} placeholder="Create a Strong Password" />
+                    <CustomInput onChange={(e) => setUsername(e.target.value)} showIcon={true} iconSrc={Profile} placeholder="Username" />
+                    <CustomInput onChange={(e) => setEmail(e.target.value)} showIcon={true} iconSrc={Message} placeholder="Email Address" />
+                    <CustomInput onChange={(e) => setPassword(e.target.value)} showIcon={true} iconSrc={Lock} placeholder="Create a Strong Password" />
                     <div className='rounded-[8px] flex flex-row justify-start gap-[16px] p-[16px] bg-[#f6f7fb] w-[375px]'>
                         <img src={DP} alt="Email" />
                         <input type="file" className='text-[#ABAFB1] bg-white/0 flex-1 text-[16px] font-[inter] pl- outline-none file-button' placeholder="INPUT" />
@@ -34,7 +50,7 @@ const SignUp = () => {
                 </div>
                 <div className='flex flex-row gap-[20px]'>
                     <div>
-                        <input onChange={() => setRole(e.target.id)} value={"institute"} ype="radio" name="role" />
+                        <input onChange={() => setRole(e.target.id)} value={"institute"} type="radio" name="role" />
                         <label>Institute</label>
                     </div>
                     <div>
